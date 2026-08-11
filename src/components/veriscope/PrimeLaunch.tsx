@@ -44,10 +44,10 @@ export function PrimeLaunch() {
     <Section className="py-14 sm:py-20">
       <div className="hairline" />
       <h2 className="mt-10 font-display text-2xl leading-[1.2] font-medium tracking-tight text-balance sm:text-4xl">
-        Veriscope Prime launches August 17, 2026.
+        Veriscope Prime launches August 21, 2026.
       </h2>
       <p className="mt-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
-        This is your first look at Prime. Full access opens August 17. No price. No signup required
+        This is your first look at Prime. Full access opens August 21. No price. No signup required
         today.
       </p>
 
