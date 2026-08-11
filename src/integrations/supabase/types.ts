@@ -14,13 +14,86 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      community_comments: {
+        Row: {
+          author_name: string
+          content: string
+          created_at: string
+          id: string
+          is_demo: boolean
+          likes: number
+          post_slug: string
+          source: string
+          status: string
+        }
+        Insert: {
+          author_name: string
+          content: string
+          created_at?: string
+          id?: string
+          is_demo?: boolean
+          likes?: number
+          post_slug: string
+          source?: string
+          status?: string
+        }
+        Update: {
+          author_name?: string
+          content?: string
+          created_at?: string
+          id?: string
+          is_demo?: boolean
+          likes?: number
+          post_slug?: string
+          source?: string
+          status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "community_comments_post_slug_fkey"
+            columns: ["post_slug"]
+            isOneToOne: false
+            referencedRelation: "community_posts"
+            referencedColumns: ["slug"]
+          },
+        ]
+      }
+      community_posts: {
+        Row: {
+          created_at: string
+          demo_comments: number
+          demo_likes: number
+          real_likes: number
+          slug: string
+          title: string
+        }
+        Insert: {
+          created_at?: string
+          demo_comments?: number
+          demo_likes?: number
+          real_likes?: number
+          slug: string
+          title: string
+        }
+        Update: {
+          created_at?: string
+          demo_comments?: number
+          demo_likes?: number
+          real_likes?: number
+          slug?: string
+          title?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      toggle_post_like: {
+        Args: { _delta: number; _slug: string }
+        Returns: number
+      }
     }
     Enums: {
       [_ in never]: never
