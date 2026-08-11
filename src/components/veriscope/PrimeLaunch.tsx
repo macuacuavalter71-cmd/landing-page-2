@@ -3,6 +3,13 @@ import { Section } from "./Section";
 import { fetchInterestCount, registerInterest } from "@/lib/interest";
 
 const STORAGE_KEY = "veriscope:interest:prime_launch";
+const BASELINE = 973000;
+
+function formatCount(value: number) {
+  if (value >= 1_000_000) return `${(value / 1_000_000).toFixed(1).replace(/\.0$/, "")}M`;
+  if (value >= 1_000) return `${Math.floor(value / 1000)}k`;
+  return value.toLocaleString("en-US");
+}
 
 export function PrimeLaunch() {
   const [count, setCount] = useState<number | null>(null);
