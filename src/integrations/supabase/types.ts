@@ -85,11 +85,30 @@ export type Database = {
         }
         Relationships: []
       }
+      interest_counters: {
+        Row: {
+          count: number
+          created_at: string
+          key: string
+        }
+        Insert: {
+          count?: number
+          created_at?: string
+          key: string
+        }
+        Update: {
+          count?: number
+          created_at?: string
+          key?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
+      register_interest: { Args: { _key: string }; Returns: number }
       toggle_post_like: {
         Args: { _delta: number; _slug: string }
         Returns: number

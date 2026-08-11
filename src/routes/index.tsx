@@ -2,6 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Header } from "@/components/veriscope/Header";
 import { ContextBridge, Footer, Hero } from "@/components/veriscope/Hero";
 import { PrimeSection } from "@/components/veriscope/PrimeSection";
+import { PrimeLaunch } from "@/components/veriscope/PrimeLaunch";
+import { Lightbox } from "@/components/veriscope/Lightbox";
 import { CommunitySection } from "@/components/veriscope/CommunitySection";
 import { Delivery } from "@/components/veriscope/Delivery";
 
@@ -31,6 +33,9 @@ function LandingPage() {
         <Hero />
         <ContextBridge />
         <PrimeSection />
+        <PrimeLaunch />
+
+
 
         <CommunitySection
           slug="prime_feedback"
@@ -49,6 +54,8 @@ function LandingPage() {
         />
       </main>
       <Footer />
+      <Lightbox />
     </div>
+
   );
 }
