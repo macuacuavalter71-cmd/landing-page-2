@@ -33,6 +33,9 @@ function LandingPage() {
         <Hero />
         <ContextBridge />
         <PrimeSection />
+        <PrimeLaunch />
+
+
 
         <CommunitySection
           slug="prime_feedback"
