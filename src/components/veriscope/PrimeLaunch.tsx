@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Section } from "./Section";
-import { fetchInterestCount, registerInterest } from "@/lib/interest";
+import { fetchInterestCount, toggleInterest } from "@/lib/interest";
 
 const STORAGE_KEY = "veriscope:interest:prime_launch";
 const BASELINE = 973000;
