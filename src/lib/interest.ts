@@ -18,3 +18,9 @@ export async function registerInterest(key = PRIME_INTEREST_KEY): Promise<number
   if (error) throw error;
   return Number(data ?? 0);
 }
+
+export async function toggleInterest(delta: 1 | -1, key = PRIME_INTEREST_KEY): Promise<number> {
+  const { data, error } = await supabase.rpc("toggle_interest", { _key: key, _delta: delta });
+  if (error) throw error;
+  return Number(data ?? 0);
+}

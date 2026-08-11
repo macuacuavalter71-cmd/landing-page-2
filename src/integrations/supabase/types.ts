@@ -109,6 +109,10 @@ export type Database = {
     }
     Functions: {
       register_interest: { Args: { _key: string }; Returns: number }
+      toggle_interest: {
+        Args: { _delta: number; _key: string }
+        Returns: number
+      }
       toggle_post_like: {
         Args: { _delta: number; _slug: string }
         Returns: number
