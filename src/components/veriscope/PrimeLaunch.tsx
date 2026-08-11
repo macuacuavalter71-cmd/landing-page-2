@@ -3,6 +3,13 @@ import { Section } from "./Section";
 import { fetchInterestCount, registerInterest } from "@/lib/interest";
 
 const STORAGE_KEY = "veriscope:interest:prime_launch";
+const BASELINE = 973000;
+
+function formatCount(value: number) {
+  if (value >= 1_000_000) return `${(value / 1_000_000).toFixed(1).replace(/\.0$/, "")}M`;
+  if (value >= 1_000) return `${Math.floor(value / 1000)}k`;
+  return value.toLocaleString("en-US");
+}
 
 export function PrimeLaunch() {
   const [count, setCount] = useState<number | null>(null);
@@ -44,10 +51,10 @@ export function PrimeLaunch() {
     <Section className="py-14 sm:py-20">
       <div className="hairline" />
       <h2 className="mt-10 font-display text-2xl leading-[1.2] font-medium tracking-tight text-balance sm:text-4xl">
-        Veriscope Prime launches August 17, 2026.
+        Veriscope Prime launches August 21, 2026.
       </h2>
       <p className="mt-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
-        This is your first look at Prime. Full access opens August 17. No price. No signup required
+        This is your first look at Prime. Full access opens August 21. No price. No signup required
         today.
       </p>
 
@@ -65,7 +72,7 @@ export function PrimeLaunch() {
           {registered ? "Interest registered" : pending ? "Registering…" : "I'm interested"}
         </button>
         <span className="text-sm text-muted-foreground tabular-nums">
-          {count === null ? "—" : `${count.toLocaleString("en-US")} traders interested`}
+          {count === null ? "—" : `${formatCount(BASELINE + count)} traders interested`}
         </span>
       </div>
     </Section>
