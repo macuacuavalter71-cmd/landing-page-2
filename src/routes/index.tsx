@@ -54,6 +54,8 @@ function LandingPage() {
         />
       </main>
       <Footer />
+      <Lightbox />
     </div>
+
   );
 }
