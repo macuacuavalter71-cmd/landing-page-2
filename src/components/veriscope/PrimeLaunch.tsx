@@ -33,12 +33,14 @@ export function PrimeLaunch() {
   }, []);
 
   async function onInterested() {
-    if (registered || pending) return;
+    if (pending) return;
     setPending(true);
+    const next = !registered;
     try {
-      const value = await registerInterest();
-      window.localStorage.setItem(STORAGE_KEY, "1");
-      setRegistered(true);
+      const value = await toggleInterest(next ? 1 : -1);
+      if (next) window.localStorage.setItem(STORAGE_KEY, "1");
+      else window.localStorage.removeItem(STORAGE_KEY);
+      setRegistered(next);
       setCount(value);
     } catch {
       /* leave the button actionable if the write failed */
@@ -62,14 +64,15 @@ export function PrimeLaunch() {
         <button
           type="button"
           onClick={onInterested}
-          disabled={registered || pending}
-          className={`rounded-md border px-6 py-3 text-sm font-medium tracking-[0.08em] uppercase transition-colors duration-300 ${
+          aria-pressed={registered}
+          className={`cursor-pointer rounded-md border px-6 py-3 text-sm font-medium tracking-[0.08em] uppercase transition-colors duration-300 active:scale-[0.98] ${
             registered
-              ? "cursor-default border-gold/40 bg-gold/15 text-gold"
+              ? "border-gold/60 bg-gold/20 text-gold hover:bg-gold/30"
               : "border-gold/60 bg-gold/10 text-gold hover:bg-gold/20"
-          } disabled:opacity-80`}
+          } disabled:opacity-70`}
+          disabled={pending}
         >
-          {registered ? "Interest registered" : pending ? "Registering…" : "I'm interested"}
+          {pending ? "Registering…" : registered ? "Interest registered ✓" : "I'm interested"}
         </button>
         <span className="text-sm text-muted-foreground tabular-nums">
           {count === null ? "—" : `${formatCount(BASELINE + count)} traders interested`}
