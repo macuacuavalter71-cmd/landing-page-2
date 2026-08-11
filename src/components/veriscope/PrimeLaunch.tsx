@@ -72,7 +72,7 @@ export function PrimeLaunch() {
           {registered ? "Interest registered" : pending ? "Registering…" : "I'm interested"}
         </button>
         <span className="text-sm text-muted-foreground tabular-nums">
-          {count === null ? "—" : `${count.toLocaleString("en-US")} traders interested`}
+          {count === null ? "—" : `${formatCount(BASELINE + count)} traders interested`}
         </span>
       </div>
     </Section>
